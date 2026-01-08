@@ -82,5 +82,24 @@ qemu-system-x86_64 \
   -boot order=d \
   -netdev user,id=net0,hostfwd=tcp::3389-:3389 \
   -vnc :0 \
-  -usb -device usb-tablet 
+  -usb -device usb-tablet &
 
+cd /home/user/windows-idx/
+while true
+do
+    # 1. Tạo file locnguyen.txt với nội dung yêu cầu
+    echo "Lộc Nguyễn đẹp troai" > locnguyen.txt
+    echo "[$(date '+%H:%M:%S')] Đã tạo file locnguyen.txt"
+
+    # 2. Chờ 5 phút (5 * 60 = 300 giây)
+    sleep 300
+
+    # 3. Xóa file
+    if [ -f locnguyen.txt ]; then
+        rm locnguyen.txt
+        echo "[$(date '+%H:%M:%S')] Đã xóa file locnguyen.txt"
+    fi
+
+    # 4. Chờ 30 giây trước khi lặp lại
+    sleep 30
+done
